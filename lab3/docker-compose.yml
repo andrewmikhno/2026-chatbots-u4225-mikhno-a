@@ -1,0 +1,21 @@
+services:
+  bot:
+    build: .
+    container_name: assistant-bot
+    restart: unless-stopped        # перезапуск после падения и перезагрузки сервера
+    env_file: .env                 # BOT_TOKEN, OPENAI_API_KEY, OWNER_ID и т.д.
+    environment:
+      # пути внутри контейнера (перекрывают значения из .env)
+      DB_PATH: /app/data/bot.db
+      GOOGLE_CREDENTIALS_FILE: /app/credentials.json
+    volumes:
+      - bot-data:/app/data                            # SQLite переживает пересборку контейнера
+      - ./credentials.json:/app/credentials.json:ro   # ключ Google — только для чтения
+    logging:
+      driver: json-file
+      options:                     # ротация логов, чтобы они не заняли весь диск
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  bot-data:
