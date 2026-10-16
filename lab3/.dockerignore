@@ -1,0 +1,15 @@
+# Секреты не должны попасть в образ — они передаются через env_file и volume
+.env
+credentials.json
+
+# Локальные данные и мусор
+*.db
+*.log
+.venv/
+__pycache__/
+*.pyc
+
+# Материалы отчёта
+screenshots/
+demo/
+*.md

@@ -18,3 +18,6 @@ venv/
 
 # Google service account key
 credentials.json
+
+# Logs
+*.log
