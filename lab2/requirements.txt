@@ -1,0 +1,6 @@
+python-telegram-bot[job-queue]==22.8
+python-dotenv==1.2.4
+tzdata==2026.5
+openai==3.31.0
+google-api-python-client==2.201.0
+google-auth==2.62.0
